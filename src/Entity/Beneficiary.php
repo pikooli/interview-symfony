@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=BeneficiaryRepository::class)
-, */
+ */
 class Beneficiary
 {
     /**
