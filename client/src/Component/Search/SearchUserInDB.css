@@ -1,23 +1,23 @@
-#form_search > input {
+.form_search > input {
   box-sizing: border-box;
   height: 3vh;
   width: 300px;
 }
 
-#form_search > input[type="submit"] {
+.form_search > input[type="submit"] {
   box-sizing: border-box;
   height: 3vh;
   width: 100px;
 }
 
 @media only screen and (max-width: 600px) {
-  #form_search > input {
+  .form_search > input {
     box-sizing: border-box;
     height: 3vh;
     width: 200px;
   }
 
-  #form_search > input[type="submit"] {
+  .form_search > input[type="submit"] {
     box-sizing: border-box;
     height: 3vh;
     width: 100px;

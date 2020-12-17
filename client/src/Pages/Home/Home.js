@@ -1,10 +1,11 @@
 import React from "react";
+import Cookies from "js-cookie";
 import names from "../../names";
 import getUsersInfo from "../../Controller/API/GetUsersInfo";
 import AddButton from "../../Component/Button/Add";
 import DeleteButton from "../../Component/Button/Delete";
+import SearchUserInDB from "../../Component/Search/SearchUserInDB";
 import SearchUser from "../../Component/Search/SearchUser";
-import Cookies from "js-cookie";
 
 const apiEndpoint = "https://avatars.dicebear.com/v2/avataaars/";
 const apiOptions = "options[mood][]=happy";
@@ -15,6 +16,12 @@ function App() {
   const [registeredBeneficiaries, setRegisteredBeneficiaries] = React.useState(
     []
   );
+  const [beneficiaryNames, setBeneficiaryNames] = React.useState(
+    [...Array(12).keys()].map((number) => ({
+      name: names[Math.floor(Math.random() * names.length)],
+    }))
+  );
+  console.log(beneficiaryNames);
   const [email, setEmail] = React.useState("");
 
   function fetchBeneficiairies() {
@@ -31,18 +38,16 @@ function App() {
     setEmail(Cookies.get("email"));
   }, []);
 
-  const beneficiaryNames = [...Array(12).keys()].map((number) => ({
-    name: names[Math.floor(Math.random() * names.length)],
-  }));
-
   return (
     <div className="App">
       <header className="App-header">
         <h1>Bienvenue dans le gestionnaire de bénéficaires Reconnect</h1>
         {email ? <h3>Bonjour {email}</h3> : null}
-        <hr />
-        <SearchUser setRegisteredBeneficiaries={setRegisteredBeneficiaries} />
         <h3>Personnes stockées en base</h3>
+        <SearchUserInDB
+          setRegisteredBeneficiaries={setRegisteredBeneficiaries}
+        />
+        <hr />
         <div className="Beneficiaries-list">
           {registeredBeneficiaries.map((beneficiary) => (
             <div className="Beneficiary-card" key={beneficiary.id}>
@@ -58,16 +63,21 @@ function App() {
         </div>
         <hr />
         <h3>Personnes non stockées</h3>
+        <SearchUser setBeneficiaryNames={setBeneficiaryNames} />
+        <hr />
+
         <div className="Beneficiaries-list">
           {beneficiaryNames.map((beneficiary, index) => (
             <div className="Beneficiary-card" key={beneficiary.name + index}>
               <img src={getAvatar(beneficiary.name)} alt={beneficiary.name} />
               <span>{beneficiary.name}</span>
               <br />
-              <AddButton
-                name={beneficiary.name}
-                fetchBeneficiairies={fetchBeneficiairies}
-              />
+              {email ? (
+                <AddButton
+                  name={beneficiary.name}
+                  fetchBeneficiairies={fetchBeneficiairies}
+                />
+              ) : null}
             </div>
           ))}
         </div>
