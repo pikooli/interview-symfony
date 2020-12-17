@@ -4,48 +4,53 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 import "./App.css";
+import "./Nav.css";
+
 import Home from "./Pages/Home/Home";
 import Authentication from "./Pages/Authentication/Authentication";
 
 function useLogic() {
-  const [cookie, setCookie] = useState(null);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
-    setCookie(Cookies.get("token"));
+    setEmail(Cookies.get("email"));
   });
 
+  // when disconnect, remove from cookies email and token
   function onDisconnect() {
     Cookies.set("token", "");
+    Cookies.set("email", "");
     axios.defaults.headers.common["Authorization"] = "";
   }
 
+  // disconnect href
   function Disconnect() {
     return (
       <a href="/" onClick={onDisconnect}>
-        {" "}
-        Disconnect
+        Deconnection
       </a>
     );
   }
+
   return {
-    cookie,
+    email,
     Disconnect,
-    setCookie,
+    setEmail,
   };
 }
 export default function App() {
-  const { cookie, Disconnect, setCookie } = useLogic();
+  const { email, Disconnect, setEmail } = useLogic();
 
   return (
     <Router>
       <div>
-        <nav>
+        <nav id="navbar">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Accueil</Link>
             </li>
             <li>
-              {!cookie ? (
+              {!email ? (
                 <Link to="/Authentication">Authentication</Link>
               ) : (
                 <Disconnect />
@@ -55,7 +60,7 @@ export default function App() {
         </nav>
         <Switch>
           <Route path="/Authentication">
-            <Authentication setCookie={setCookie} />
+            <Authentication setEmailParent={setEmail} />
           </Route>
           <Route path="/">
             <Home />

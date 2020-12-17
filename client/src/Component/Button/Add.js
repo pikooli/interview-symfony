@@ -4,6 +4,8 @@ import {
   searchBeneficiaire,
 } from "../../Controller/API/Beneficiairies";
 
+// add beneficiary to db
+
 function useLogic(name, fetchBeneficiairies) {
   useEffect(() => {}, []);
 

@@ -5,6 +5,8 @@ import {
   deleteBeneficiaire,
 } from "../../Controller/API/Beneficiairies";
 
+// remove beneficiary from db
+
 function useLogic(name, fetchBeneficiairies) {
   useEffect(() => {}, []);
 

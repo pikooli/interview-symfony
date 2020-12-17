@@ -4,6 +4,7 @@ import getUsersInfo from "../../Controller/API/GetUsersInfo";
 import AddButton from "../../Component/Button/Add";
 import DeleteButton from "../../Component/Button/Delete";
 import SearchUser from "../../Component/Search/SearchUser";
+import Cookies from "js-cookie";
 
 const apiEndpoint = "https://avatars.dicebear.com/v2/avataaars/";
 const apiOptions = "options[mood][]=happy";
@@ -14,6 +15,7 @@ function App() {
   const [registeredBeneficiaries, setRegisteredBeneficiaries] = React.useState(
     []
   );
+  const [email, setEmail] = React.useState("");
 
   function fetchBeneficiairies() {
     getUsersInfo()
@@ -26,6 +28,7 @@ function App() {
 
   React.useEffect(() => {
     fetchBeneficiairies();
+    setEmail(Cookies.get("email"));
   }, []);
 
   const beneficiaryNames = [...Array(12).keys()].map((number) => ({
@@ -36,6 +39,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Bienvenue dans le gestionnaire de bénéficaires Reconnect</h1>
+        {email ? <h3>Bonjour {email}</h3> : null}
         <hr />
         <SearchUser setRegisteredBeneficiaries={setRegisteredBeneficiaries} />
         <h3>Personnes stockées en base</h3>
@@ -44,6 +48,7 @@ function App() {
             <div className="Beneficiary-card" key={beneficiary.id}>
               <img src={getAvatar(beneficiary.name)} alt={beneficiary.name} />
               <span>{beneficiary.name}</span>
+              <br />
               <DeleteButton
                 name={beneficiary.name}
                 fetchBeneficiairies={fetchBeneficiairies}
@@ -58,6 +63,7 @@ function App() {
             <div className="Beneficiary-card" key={beneficiary.name + index}>
               <img src={getAvatar(beneficiary.name)} alt={beneficiary.name} />
               <span>{beneficiary.name}</span>
+
               <AddButton
                 name={beneficiary.name}
                 fetchBeneficiairies={fetchBeneficiairies}
