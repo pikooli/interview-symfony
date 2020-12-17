@@ -3,8 +3,6 @@ import Cookies from "js-cookie";
 
 import "./SearchUserInDB.css";
 import names from "../../names";
-import { searchBeneficiaire } from "../../Controller/API/Beneficiairies";
-import getUsersInfo from "../../Controller/API/GetUsersInfo";
 // make the first letter in name capitalize
 
 function capitalizeFirstLetter(name) {
