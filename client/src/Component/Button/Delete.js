@@ -7,8 +7,7 @@ function useLogic(name, fetchBeneficiairies) {
   useEffect(() => {}, []);
 
   async function onClick() {
-    console.log(name);
-    console.log(await deleteBeneficiaire(name));
+    await deleteBeneficiaire(name);
     await fetchBeneficiairies();
   }
   return { onClick };

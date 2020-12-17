@@ -21,7 +21,6 @@ function App() {
       name: names[Math.floor(Math.random() * names.length)],
     }))
   );
-  console.log(beneficiaryNames);
   const [email, setEmail] = React.useState("");
 
   function fetchBeneficiairies() {
