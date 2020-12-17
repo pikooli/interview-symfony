@@ -2,6 +2,7 @@
   background-color: #282c34;
   color: white;
   text-align: end;
+  width: 100vw;
   padding: 20px;
   height: 5vh;
 }
@@ -9,6 +10,7 @@
 #navbar > p,
 #navbar > ul {
   margin: 0;
+  padding: 0;
 }
 #navbar > p {
   font-size: calc(10px + 2vmin);

@@ -18,7 +18,7 @@ function useLogic(setEmailParent) {
 
   useEffect(() => {
     if (Cookies.get("token")) history.push("/");
-  }, []);
+  }, [history]);
 
   function submit() {
     if (!validateEmail(email)) setError("Mauvais email");
@@ -45,9 +45,7 @@ function useLogic(setEmailParent) {
 }
 
 export default function App({ setEmailParent }) {
-  const { email, setEmail, password, setPassword, submit, error } = useLogic(
-    setEmailParent
-  );
+  const { setEmail, setPassword, submit, error } = useLogic(setEmailParent);
 
   return (
     <div id="authentication">

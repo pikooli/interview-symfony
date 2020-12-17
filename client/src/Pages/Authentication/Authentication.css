@@ -15,7 +15,7 @@
 
 #authentication > form > input {
   margin: 0 0 20px 0;
-  width: 50vw;
+  width: 500px;
   height: 5vh;
 }
 
@@ -29,4 +29,12 @@
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  #authentication > form > input {
+    margin: 0 0 20px 0;
+    width: 300px;
+    height: 5vh;
+  }
 }

@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as url from "./Url";
-import Cookies from "js-cookie";
 
 // tester@gmail.com
 // I@mTheT€ster

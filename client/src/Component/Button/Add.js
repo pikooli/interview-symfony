@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  addBeneficiaire,
-  searchBeneficiaire,
-} from "../../Controller/API/Beneficiairies";
+import React, { useEffect } from "react";
+import { addBeneficiaire } from "../../Controller/API/Beneficiairies";
 
 // add beneficiary to db
 

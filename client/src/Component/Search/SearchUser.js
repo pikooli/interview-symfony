@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
-import {
-  addBeneficiaire,
-  searchBeneficiaire,
-} from "../../Controller/API/Beneficiairies";
+import "./SearchUser.css";
+import { searchBeneficiaire } from "../../Controller/API/Beneficiairies";
 import getUsersInfo from "../../Controller/API/GetUsersInfo";
-
 // make the first letter in name capitalize
 
 function capitalizeFirstLetter(name) {

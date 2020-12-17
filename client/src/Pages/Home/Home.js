@@ -63,7 +63,7 @@ function App() {
             <div className="Beneficiary-card" key={beneficiary.name + index}>
               <img src={getAvatar(beneficiary.name)} alt={beneficiary.name} />
               <span>{beneficiary.name}</span>
-
+              <br />
               <AddButton
                 name={beneficiary.name}
                 fetchBeneficiairies={fetchBeneficiairies}

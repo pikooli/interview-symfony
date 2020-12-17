@@ -14,7 +14,7 @@ function useLogic() {
 
   useEffect(() => {
     setEmail(Cookies.get("email"));
-  });
+  }, []);
 
   // when disconnect, remove from cookies email and token
   function onDisconnect() {
